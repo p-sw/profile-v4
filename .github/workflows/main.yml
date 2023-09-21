@@ -7,6 +7,10 @@ jobs:
   deploy:
     name: Deploy to Production Server
     runs-on: ubuntu-latest
+    env:
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      HOSTNAME: ${{ secrets.HOSTNAME }}
     steps:
     - uses: actions/checkout@v1
     - name: Setup Node.js environment
