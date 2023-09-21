@@ -34,4 +34,6 @@ jobs:
         port: 22
         script: |
           cd /mnt/apps/profile-v4
+          export PM2_HOME=/home/psw/.pm2
           /usr/local/bin/pm2 restart profile-v4 || /usr/local/bin/pm2 start "node build" --name profile-v4
+          
