@@ -1,0 +1,63 @@
+:root {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+        Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+
+    --dark-base-100: #000000;
+    --dark-base-100-content: #ffffff;
+    --dark-base-200: #1b1b29;
+    --dark-base-200-content: #bbbbbbAA;
+
+    --light-base-100: #ffffff;
+    --light-base-100-content: #000000;
+    --light-base-200: #f4f4ee;
+    --light-base-200-content: #757575;
+
+    /* Dark mode for default */
+    --base-100: var(--dark-base-100);
+    --base-100-content: var(--dark-base-100-content);
+    --base-200: var(--dark-base-200);
+    --base-200-content: var(--dark-base-200-content);
+
+    --primary: #6323d1;
+    --secondary: #73e79e;
+}
+
+html[data-theme='light'] {
+    --base-100: var(--light-base-100);
+    --base-100-content: var(--light-base-100-content);
+    --base-200: var(--light-base-200);
+    --base-200-content: var(--light-base-200-content);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --base-100: var(--dark-base-100);
+        --base-100-content: var(--dark-base-100-content);
+        --base-200: var(--dark-base-200);
+        --base-200-content: var(--dark-base-200-content);
+    }
+
+    html[data-theme='light'] {
+        --base-100: var(--light-base-100);
+        --base-100-content: var(--light-base-100-content);
+        --base-200: var(--light-base-200);
+        --base-200-content: var(--light-base-200-content);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --base-100: var(--light-base-100);
+        --base-100-content: var(--light-base-100-content);
+        --base-200: var(--light-base-200);
+        --base-200-content: var(--light-base-200-content);
+    }
+
+    html[data-theme="dark"] {
+        --base-100: var(--dark-base-100);
+        --base-100-content: var(--dark-base-100-content);
+        --base-200: var(--dark-base-200);
+        --base-200-content: var(--dark-base-200-content);
+    }
+}
