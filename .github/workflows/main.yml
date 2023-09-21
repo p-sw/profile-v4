@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.8.1
+    - name: Install Dependencies
+      run: npm install
+    - name: Build
+      run: npm run build
+    - name: Send Built File to Server
+      run: scp ./build $USERNAME:$PASSWORD@$HOSTNAME:/mnt/apps/profile-v4
