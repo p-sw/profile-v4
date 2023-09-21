@@ -33,6 +33,16 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
-          cd /mnt/apps/profile-v4
+          cd /mnt/apps
+          if [ -d profile-v4 ]
+          then
+          cd profile-v4
+          git pull
+          else
+          git clone https://github.com/p-sw/profile-v4
+          cd profile-v4
+          end
+          npm install
+          npm run build
           PORT=3002 /usr/local/bin/pm2 restart profile-v4 || PORT=3002 /usr/local/bin/pm2 start "node build" --name profile-v4
           
