@@ -17,11 +17,14 @@ jobs:
     - name: Build
       run: npm run build
     - name: Send Built File to Server
-      run: scp -r ./build $USERNAME:$PASSWORD@$HOST:/mnt/apps/profile-v4
-      env:
-        USERNAME: ${{ secrets.USERNAME }}
-        PASSWORD: ${{ secrets.PASSWORD }}
-        HOST: ${{ secrets.HOST }}
+      uses: appleboy/scp-action@v0.1.4
+      with: 
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22
+        source: "build"
+        target: "/mnt/apps/"
     - name: Remotely Start Server
       uses: appleboy/ssh-action@v1.0.0
       with:
