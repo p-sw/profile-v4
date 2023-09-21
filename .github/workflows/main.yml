@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
     - name: Remotely Start Server
       uses: appleboy/ssh-action@v1.0.0
       with:
