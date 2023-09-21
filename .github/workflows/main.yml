@@ -15,7 +15,7 @@ jobs:
     - name: Install Dependencies
       run: npm install
     - name: Build
-      run: npm run build
+      run: PORT=3002 npm run build
     - name: Send Built File to Server
       uses: appleboy/scp-action@v0.1.4
       with: 
