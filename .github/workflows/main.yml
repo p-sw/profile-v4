@@ -7,10 +7,7 @@ jobs:
   deploy:
     name: Deploy to Production Server
     runs-on: ubuntu-latest
-    env:
-      USERNAME: ${{ secrets.USERNAME }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      HOSTNAME: ${{ secrets.HOSTNAME }}
+    
     steps:
     - uses: actions/checkout@v1
     - name: Setup Node.js environment
@@ -20,9 +17,16 @@ jobs:
     - name: Build
       run: npm run build
     - name: Send Built File to Server
-      run: scp -r ./build $USERNAME:$PASSWORD@$HOSTNAME:/mnt/apps/profile-v4
+      run: scp -r ./build $USERNAME:$PASSWORD@$HOST:/mnt/apps/profile-v4
+      env:
+        USERNAME: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        HOST: ${{ secrets.HOST }}
     - name: Remotely Start Server
-      run: |
-        ssh $USERNAME:$PASSWORD@$HOSTNAME:22
-        cd /mnt/apps
-        touch testasdf
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22
+        script: whoami
