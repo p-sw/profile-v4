@@ -10,21 +10,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v3.8.1
-    - name: Install Dependencies
-      run: npm install
-    - name: Build
-      run: PORT=3002 npm run build
-    - name: Send Built File to Server
-      uses: appleboy/scp-action@v0.1.4
-      with: 
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: 22
-        source: "build"
-        target: "/mnt/apps/profile-v4"
     - name: Remotely Start Server
       uses: appleboy/ssh-action@v1.0.0
       with:
