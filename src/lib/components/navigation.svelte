@@ -93,7 +93,6 @@
 					document.cookie = `theme=${theme};`;
 					document.documentElement.setAttribute('data-theme', theme);
 				}}
-				class="icon-button"
 				on:keypress={() => {}}
 				role="button"
 				tabindex={0}
@@ -112,7 +111,16 @@
 					>
 				{/if}
 			</span>
-			<Icon src={AiFillGithub} color="var(--base-100-content)" />
+			<span
+				on:click={() => {
+					window.open('https://github.com/p-sw/profile-v4', '_blank');
+				}}
+				on:keypress={() => {}}
+				role="button"
+				tabindex={0}
+			>
+				<Icon src={AiFillGithub} color="var(--base-100-content)" />
+			</span>
 		</div>
 		{#each Object.entries(routes) as [route, routeName]}
 			<a href={route} class={$page.url.pathname === route ? 'active' : ''}>{routeName}</a>
