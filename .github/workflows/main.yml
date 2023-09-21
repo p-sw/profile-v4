@@ -16,4 +16,9 @@ jobs:
     - name: Build
       run: npm run build
     - name: Send Built File to Server
-      run: scp ./build $USERNAME:$PASSWORD@$HOSTNAME:/mnt/apps/profile-v4
+      run: scp -r ./build $USERNAME:$PASSWORD@$HOSTNAME:/mnt/apps/profile-v4
+    - name: Remotely Start Server
+      run: |
+        ssh $USERNAME:$PASSWORD@$HOSTNAME:22
+        cd /mnt/apps
+        touch testasdf
