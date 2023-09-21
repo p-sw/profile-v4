@@ -24,7 +24,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         source: "build"
-        target: "/mnt/apps/"
+        target: "/mnt/apps/profile-v4"
     - name: Remotely Start Server
       uses: appleboy/ssh-action@v1.0.0
       with:
@@ -32,4 +32,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: 22
-        script: whoami
+        script: |
+          cd /mnt/apps/profile-v4
+          /usr/local/bin/pm2 restart profile-v4 || /usr/local/bin/pm2 start "node build" --name profile-v4
