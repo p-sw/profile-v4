@@ -42,3 +42,25 @@ export function spinfade(node, config) {
         }
     }
 }
+
+/** 
+ * @param {Element} node
+ * @param {import('svelte/transition').TransitionConfig} [config]
+ * @returns {{duration?: number, delay?: number, css: (t: number) => string}}
+ */
+export function fadeheight(node, config) {
+    const originNodeHeight = node.clientHeight;
+
+    return {
+        delay: config?.delay,
+        duration: config?.duration ?? 30,
+        css(t) {
+            const easeFactor = linear(t);
+
+            return `
+                opacity: ${easeFactor};
+                height: ${originNodeHeight * easeFactor}px;
+            `
+        }
+    }
+}
