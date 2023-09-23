@@ -5,6 +5,9 @@
 	import { onMount } from 'svelte';
 	import NavControls from './navcontrols.svelte';
 
+	import Menu from '~icons/mdi/menu';
+	import Close from '~icons/mdi/close';
+
 	/** @type boolean */
 	let navOpened = false;
 
@@ -52,16 +55,7 @@
 				}
 			}}
 		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				height="1em"
-				viewBox="0 -960 960 960"
-				width="1em"
-				fill="var(--base-100-content)"
-				><path
-					d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-				/></svg
-			>
+			<Close />
 		</span>
 	{:else}
 		<span
@@ -74,14 +68,7 @@
 				}
 			}}
 		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				height="1em"
-				viewBox="0 -960 960 960"
-				width="1em"
-				fill="var(--base-100-content)"
-				><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg
-			>
+			<Menu />
 		</span>
 	{/if}
 </nav>
@@ -135,6 +122,12 @@
 
 			@media screen and (min-width: 1000px) {
 				display: none;
+			}
+
+			& > svg {
+				color: var(--base-100-content);
+				width: 100%;
+				height: 100%;
 			}
 		}
 
