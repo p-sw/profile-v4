@@ -79,6 +79,9 @@
 </nav>
 
 <style>
+	nav {
+		z-index: 10;
+	}
 	.mob {
 		position: fixed;
 		bottom: 0;
