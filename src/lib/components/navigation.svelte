@@ -39,7 +39,11 @@
 	<h1>PSW</h1>
 	<div>
 		{#each Object.entries(routes) as [route, routeName]}
-			<a href={route} class={$page.url.pathname === route ? 'active' : ''}>{routeName}</a>
+			<a
+				href={route}
+				class={'/' + ($page.url.pathname.split('/')[1] ?? '') === route ? 'active' : ''}
+				>{routeName}</a
+			>
 		{/each}
 		<aside>
 			<NavControls {theme} />
@@ -74,8 +78,10 @@
 			<NavControls {theme} />
 		</div>
 		{#each Object.entries(routes) as [route, routeName]}
-			<a href={route} class={$page.url.pathname === route ? 'active' : ''} target="_self"
-				>{routeName}</a
+			<a
+				href={route}
+				class={'/' + ($page.url.pathname.split('/')[1] ?? '') === route ? 'active' : ''}
+				target="_self">{routeName}</a
 			>
 		{/each}
 	</div>
