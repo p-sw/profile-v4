@@ -74,7 +74,9 @@
 			<NavControls {theme} />
 		</div>
 		{#each Object.entries(routes) as [route, routeName]}
-			<a href={route} class={$page.url.pathname === route ? 'active' : ''}>{routeName}</a>
+			<a href={route} class={$page.url.pathname === route ? 'active' : ''} target="_self"
+				>{routeName}</a
+			>
 		{/each}
 	</div>
 {/if}
