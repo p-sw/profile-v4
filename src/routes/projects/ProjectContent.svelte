@@ -6,17 +6,37 @@
 	/** @type {import('$lib/types/projects').Project[]} */
 	export let projects;
 
+	/** @type {string} [hash] */
+	export let hash = '';
+
 	import Github from '~icons/mdi/github';
 	import Web from '~icons/mdi/web';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		const el = document.querySelector(hash);
+		if (hash && el) {
+			console.log(hash, el.getBoundingClientRect().y);
+			window.scrollTo({
+				behavior: 'instant',
+				top: 0
+			});
+			window.scrollTo({
+				behavior: 'smooth',
+				top: el.getBoundingClientRect().y - 100
+			});
+		}
+	});
 </script>
 
 <section>
 	<header>
-		{icon}
+		{@html icon}
 		{name}
 	</header>
 	{#each projects as project}
-		<article>
+		<hr />
+		<article id={project.slug}>
 			<header>
 				<h2>{project.name}</h2>
 				{#if project.web || project.git}
@@ -32,7 +52,7 @@
 			</header>
 			<p>{project.description}</p>
 			{#if project.src}
-				<aside />
+				<aside style:background-image="url({project.src})" />
 			{/if}
 		</article>
 	{/each}
@@ -40,11 +60,77 @@
 
 <style>
 	section {
+		& hr {
+			background-color: var(--base-200-content);
+			width: 100%;
+			height: 1px;
+		}
+
 		@media screen and (min-width: 1000px) {
 			padding-left: calc(30vw + 60px);
 			padding-right: 60px;
-			padding-top: 6vh;
-			padding-bottom: 6vh;
+		}
+		padding: 6vh 5vw;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		gap: 10vh;
+
+		& > header {
+			font-size: 48px;
+			font-weight: 900;
+
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: flex-start;
+			gap: 12px;
+		}
+
+		& article {
+			font-size: 16px;
+			font-weight: 600;
+
+			& header {
+				font-size: 2em;
+				font-weight: 500;
+
+				& h2 {
+					width: 100%;
+				}
+
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: flex-start;
+				gap: 5px;
+
+				margin-bottom: 15px;
+
+				& svg {
+					font-size: 0.6em;
+				}
+			}
+
+			& p {
+				font-size: 1em;
+				font-weight: 300;
+				opacity: 0.6;
+				margin-bottom: 25px;
+			}
+
+			& aside {
+				max-width: 600px;
+				aspect-ratio: 16/9;
+
+				border: 5px solid var(--secondary);
+
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
 		}
 	}
 </style>
