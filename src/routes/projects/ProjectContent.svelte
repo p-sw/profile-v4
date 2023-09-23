@@ -6,17 +6,15 @@
 	/** @type {import('$lib/types/projects').Project[]} */
 	export let projects;
 
-	/** @type {string} [hash] */
-	export let hash = '';
-
 	import Github from '~icons/mdi/github';
 	import Web from '~icons/mdi/web';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
 	onMount(() => {
-		const el = document.querySelector(hash);
-		if (hash && el) {
-			console.log(hash, el.getBoundingClientRect().y);
+		console.log($page.url.pathname);
+		const el = $page.url.hash ? document.querySelector($page.url.hash) : null;
+		if (el) {
 			window.scrollTo({
 				behavior: 'instant',
 				top: 0
