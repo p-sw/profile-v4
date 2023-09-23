@@ -99,6 +99,8 @@
 
 		z-index: 99;
 
+		box-shadow: 0 -20px 40px var(--base-100-content);
+
 		& h1 {
 			color: var(--base-100-content);
 
