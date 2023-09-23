@@ -8,10 +8,9 @@
 	/** @type {number} */
 	export let selfIndex;
 
-	import Icon from 'svelte-icons-pack/Icon.svelte';
-	import AiFillCrown from 'svelte-icons-pack/ai/AiFillCrown';
 	import { slide, fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
+	import Crown from '~icons/mdi/crown';
 
 	let opened = false;
 
@@ -61,7 +60,7 @@
 				{#each tech as a_tech}
 					<a href={a_tech.url} class={a_tech.fav ? 'fav' : ''}>
 						{#if a_tech.most}
-							<Icon src={AiFillCrown} color="var(--base-100-content)" />
+							<Crown fill="var(--base-100-" />
 						{/if}
 						{a_tech.name}
 					</a>
@@ -141,10 +140,6 @@
 				&.fav {
 					background-color: gold;
 					color: #000000;
-
-					& svg {
-						fill: #000000;
-					}
 				}
 			}
 		}

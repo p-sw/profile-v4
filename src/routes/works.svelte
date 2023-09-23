@@ -26,22 +26,6 @@
 	/** @type {{title: string, description: string, tech: {name: string, url: string, fav?: boolean, most?: boolean}[]}[]} */
 	const works = [
 		{
-			title: 'Web Design',
-			description: 'I make beautiful web designs with my design sense that I earned by experience.',
-			tech: [
-				{
-					name: 'Figma',
-					url: 'https://www.figma.com/',
-					fav: true,
-					most: true
-				},
-				{
-					name: 'Lunacy',
-					url: 'https://icons8.com/lunacy'
-				}
-			]
-		},
-		{
 			title: 'Frontend',
 			description: 'With my awesome coding skill, you can meet your dream in real.',
 			tech: [
