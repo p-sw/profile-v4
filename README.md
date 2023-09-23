@@ -2,9 +2,12 @@
 
 ## To-Do
 
-- [ ] Projects page
+- [x] Projects page
 - [ ] Contact page
 - [ ] Places page
 
 - [ ] Wakatime Integration
 - [ ] UptimeKuma Integration (https://up.psw.kr)
+- [ ] Github Integration
+
+- [ ] SEO
