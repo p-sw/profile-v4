@@ -9,6 +9,7 @@ export interface Project {
 
 export interface Category {
     name: string,
-    icon: any
+    icon: any,
+    slug: string,
     projects: Project[]
 }

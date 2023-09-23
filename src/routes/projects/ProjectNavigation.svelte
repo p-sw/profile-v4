@@ -14,7 +14,7 @@
 </script>
 
 <nav class="wid">
-	{#each projectData as { name, icon, projects } (name)}
+	{#each projectData as { name, slug, icon, projects } (name)}
 		<div>
 			<header
 				on:click={() => {
@@ -40,10 +40,10 @@
 			{#each projects as project, index}
 				{#if openedCategory.includes(name)}
 					<a
-						href="/projects/{name}#{project.slug}"
+						href="/projects/{slug}#{project.slug}"
 						in:fadeheight={{ delay: index * 40, duration: 100 }}
 						out:fadeheight={{ delay: (projects.length - index) * 40, duration: 100 }}
-						><Subdirectory />{project.name}</a
+						target="_self"><Subdirectory />{project.name}</a
 					>
 				{/if}
 			{/each}
@@ -65,14 +65,14 @@
 			<Menu />
 		{/if}
 	</span>
-	{#each projectData as { name, icon }, index}
+	{#each projectData as { name, slug, icon }, index}
 		{#if isMenuOpened}
 			<span
 				in:fade={{ delay: index * 30, duration: 100 }}
 				out:fade={{ delay: (projectData.length - index) * 30, duration: 100 }}
 			>
 				<b>{name}</b>
-				<a href="/projects/{name}">{@html icon}</a>
+				<a href="/projects/{slug}">{@html icon}</a>
 			</span>
 		{/if}
 	{/each}
@@ -107,6 +107,8 @@
 			gap: 6px;
 
 			font-size: 16px;
+
+			cursor: pointer;
 
 			& b {
 				font-weight: 400;
@@ -166,6 +168,8 @@
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: center;
+
+			cursor: pointer;
 
 			& header,
 			a {

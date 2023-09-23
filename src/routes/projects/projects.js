@@ -7,6 +7,7 @@ const projectData = [
     {
         name: "Python",
         icon: PythonLogo,
+        slug: "python",
         projects: [
             {
                 name: "Nyanlang",
@@ -38,6 +39,7 @@ const projectData = [
     {
         name: "JS/TS",
         icon: Typescript,
+        slug: "jsts",
         projects: [
             {
                 name: "Nyanlang VSCode",
@@ -50,6 +52,7 @@ const projectData = [
     {
         name: "Web",
         icon: Web,
+        slug: "web",
         projects: [
             {
                 name: "Nyanlang Web",
