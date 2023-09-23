@@ -72,7 +72,7 @@
 				out:fade={{ delay: (projectData.length - index) * 30, duration: 100 }}
 			>
 				<b>{name}</b>
-				<a href="/projects/{slug}">{@html icon}</a>
+				<a href="/projects/{slug}" target="_self">{@html icon}</a>
 			</span>
 		{/if}
 	{/each}
