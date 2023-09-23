@@ -1,4 +1,6 @@
-/** @function typewriter
+import { linear } from 'svelte/easing';
+
+/**
    * @param {Element} node
    * @returns {{duration: number, tick: (t: number) => void}}
    */
@@ -20,4 +22,23 @@ export function typewriter(node, { speed = 1 }) {
             node.textContent = text?.slice(0, i) ?? "";
         }
     };
+}
+
+/** 
+ * @param {Element} node
+ * @param {import('svelte/transition').TransitionConfig & {in?: boolean}} [config]
+ * @returns {{duration?: number, css: (t: number) => string}}
+ */
+export function spinfade(node, config) {
+    return {
+        duration: config?.duration ?? 80,
+        css(t) {
+            const easeFactor = linear(t);
+
+            return `
+                transform: rotateZ(${(config?.in ? (1 - easeFactor) : easeFactor) * 50}deg);
+                opacity: ${easeFactor};
+            `
+        }
+    }
 }

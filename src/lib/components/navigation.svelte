@@ -4,6 +4,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import NavControls from './navcontrols.svelte';
+	import { spinfade } from '$lib/transitions';
 
 	import Menu from '~icons/mdi/menu';
 	import Close from '~icons/mdi/close';
@@ -44,33 +45,27 @@
 			<NavControls {theme} />
 		</aside>
 	</div>
-	{#if navOpened}
-		<span
-			on:click={() => (navOpened = false)}
-			role="button"
-			tabindex={1}
-			on:keypress={(e) => {
-				if (e.metaKey) {
-					navOpened = !navOpened;
-				}
-			}}
-		>
-			<Close />
-		</span>
-	{:else}
-		<span
-			on:click={() => (navOpened = true)}
-			role="button"
-			tabindex={1}
-			on:keypress={(e) => {
-				if (e.metaKey) {
-					navOpened = !navOpened;
-				}
-			}}
-		>
-			<Menu />
-		</span>
-	{/if}
+	<span
+		on:click={() => (navOpened = !navOpened)}
+		role="button"
+		tabindex={1}
+		on:keypress={(e) => {
+			if (e.metaKey) {
+				navOpened = !navOpened;
+			}
+		}}
+		transition:spinfade
+	>
+		{#if navOpened}
+			<span in:spinfade={{ in: true }} out:spinfade>
+				<Close />
+			</span>
+		{:else}
+			<span in:spinfade={{ in: true }} out:spinfade>
+				<Menu />
+			</span>
+		{/if}
+	</span>
 </nav>
 
 {#if navOpened}
@@ -114,17 +109,27 @@
 			letter-spacing: -4.5px;
 		}
 
-		& > span {
+		& span {
 			width: 3.5rem;
 			height: 3.5rem;
 
 			font-size: 3.5rem;
 
+			position: relative;
+
+			display: block;
+
 			@media screen and (min-width: 1000px) {
 				display: none;
 			}
 
-			& > svg {
+			& span {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			& svg {
 				color: var(--base-100-content);
 				width: 100%;
 				height: 100%;
