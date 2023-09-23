@@ -57,6 +57,7 @@ const projectData = [
                 description: "Project Nyanlang's website project. Only frontend is included in this repository. Playground backend code is in private repository.",
                 git: "https://github.com/Nyanlang/nyanlang-web",
                 web: "https://nyanlang.org",
+                src: "/assets/nyanlang-web.png"
             },
             {
                 name: "DodgeGame Leaderboard",
@@ -76,6 +77,7 @@ const projectData = [
                 description: "Profile & Portfolio web page version 2. Written in NextJS, Chakra-UI, with new App Directory feature.",
                 git: "https://github.com/p-sw/portfolio-v2",
                 web: "https://v2.psw.kr",
+                src: "/assets/profile-v2.png"
             },
             {
                 name: "Profile v3",
@@ -83,6 +85,7 @@ const projectData = [
                 description: "Profile & Portfolio web page version 2. Written in React, Chakra-UI, React Router.",
                 git: "https://github.com/p-sw/profile-v3",
                 web: "https://v3.psw.kr",
+                src: "/assets/profile-v3.png"
             },
             {
                 name: "Profile v4",
@@ -90,6 +93,7 @@ const projectData = [
                 description: "Current version of Profile & Portfolio. Written in Svelte + kit.",
                 git: "https://github.com/p-sw/profile-v4",
                 web: "https://psw.kr",
+                src: "/assets/profile-v4.png"
             }
         ],
     }
