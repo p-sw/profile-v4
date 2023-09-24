@@ -36,5 +36,4 @@ jobs:
           then
             rm -f .env
           fi
-          echo -e "BOT_TOKEN=$BOT_TOKEN\nCLIENT_ID=$CLIENT_ID\nCLIENT_SECRET=$CLIENT_SECRET\nGUILD_ID=$GUILD_ID"
           npm install && npm run build && ( PORT=3002 pm2 restart profile-v4 || PORT=3002 pm2 start "node build" --name profile-v4 )
