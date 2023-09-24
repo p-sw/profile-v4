@@ -1,1 +1,7 @@
-// place files you want to import through the `$lib` alias in this folder.
+/** 
+ * @param {string} endpoint
+ * @returns {string} Full Api Url
+ */
+export function DiscordApi(endpoint) {
+    return 'https://discord.com/api/v10' + endpoint;
+}
