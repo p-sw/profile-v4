@@ -16,11 +16,12 @@ jobs:
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
         CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         GUILD_ID: ${{ secrets.GUILD_ID }}
+        ORIGIN: https://psw.kr
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        envs: BOT_TOKEN,CLIENT_ID,CLIENT_SECRET,GUILD_ID
+        envs: BOT_TOKEN,CLIENT_ID,CLIENT_SECRET,GUILD_ID,ORIGIN
         port: 22
         script: |
           cd /mnt/apps
