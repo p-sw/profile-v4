@@ -1,6 +1,6 @@
 import { DiscordApi } from '$lib'
 import { error } from '@sveltejs/kit'
-import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private'
+import { CLIENT_ID, CLIENT_SECRET, ORIGIN } from '$env/static/private'
 
 /** @type {import('./$types').PageServerLoad<import('$lib/types/discord').AccessToken>} */
 export async function load({ url }) {
@@ -16,7 +16,7 @@ export async function load({ url }) {
         headers: {
             'Content-Type': "application/x-www-form-urlencoded"
         },
-        body: `client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&grant_type=authorization_code&code=${code}&redirect_uri=https://${url.hostname}/contact/join`
+        body: `client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&grant_type=authorization_code&code=${code}&redirect_uri=${ORIGIN}/contact/join`
     })
 
     if (!data.ok) {
