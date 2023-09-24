@@ -11,10 +11,16 @@ jobs:
     steps:
     - name: Remotely Start Server
       uses: appleboy/ssh-action@v1.0.0
+      env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        GUILD_ID: ${{ secrets.GUILD_ID }}
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
+        envs: BOT_TOKEN,CLIENT_ID,CLIENT_SECRET,GUILD_ID
         port: 22
         script: |
           cd /mnt/apps
@@ -26,4 +32,9 @@ jobs:
             git clone https://github.com/p-sw/profile-v4
             cd profile-v4
           fi
+          if [ -f .env ]
+          then
+            rm -f .env
+          fi
+          echo -e "BOT_TOKEN=$BOT_TOKEN\nCLIENT_ID=$CLIENT_ID\nCLIENT_SECRET=$CLIENT_SECRET\nGUILD_ID=$GUILD_ID"
           npm install && npm run build && ( PORT=3002 pm2 restart profile-v4 || PORT=3002 pm2 start "node build" --name profile-v4 )
