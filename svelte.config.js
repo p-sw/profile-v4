@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -9,10 +9,10 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		csrf: {
-			checkOrigin: false,
+			checkOrigin: false
 		}
 	},
-	preprocess: vitePreprocess(),
+	preprocess: vitePreprocess()
 };
 
 export default config;
