@@ -3,6 +3,10 @@
 	import '../globals.css';
 </script>
 
+<svelte:head>
+  <title>PSWLab</title>
+  <meta name="description" content="This is PSWLab, a place where my dream begins" />
+</svelte:head>
 <Navigation />
 <slot />
 
