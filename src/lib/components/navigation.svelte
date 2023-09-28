@@ -52,13 +52,14 @@
 	<span
 		on:click={() => (navOpened = !navOpened)}
 		role="button"
-		tabindex={1}
+		tabindex={0}
 		on:keypress={(e) => {
 			if (e.metaKey) {
 				navOpened = !navOpened;
 			}
 		}}
 		transition:spinfade
+    aria-label="navigation open"
 	>
 		{#if navOpened}
 			<span in:spinfade={{ in: true }} out:spinfade>
