@@ -14,7 +14,6 @@
 
 	const routes = {
 		'/': 'Home',
-		'/about': 'About',
 		'/projects': 'Projects',
 		'/contact': 'Contact'
 		//		'/places': 'Places'
